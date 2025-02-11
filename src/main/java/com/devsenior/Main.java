@@ -13,6 +13,7 @@ public class Main {
 		// Vende un producto
 		inventory.sellProduct("Laptop", 5);
 		inventory.sellProduct("Mouse", 10);
+		inventory.sellProduct("Dummy", 9);
 
 		// Calcula el valor total del inventario
 		var total = inventory.calculateTotalInventory();

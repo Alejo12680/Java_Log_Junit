@@ -37,6 +37,7 @@ public class Inventory {
       }
     }
 
+    // Es mala practica retornar null, pero en este caso es para simplificar el ejemplo
     return null;
   }
 
