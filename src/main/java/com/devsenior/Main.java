@@ -9,6 +9,7 @@ public class Main {
 		// Agrega productos al inventario
 		inventory.addProduct(new Product("Laptop", 10, 1000d));
 		inventory.addProduct(new Product("Mouse", 50, 20d));
+		inventory.addProduct(new Product("Monitor", 0, 500d));
 
 		// Vende un producto
 		inventory.sellProduct("Laptop", 5);

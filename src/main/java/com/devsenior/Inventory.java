@@ -32,12 +32,22 @@ public class Inventory {
   // Metodo privado para buscar un producto por su nombre
   private Product getProductByName(String name) {
     for (var product : products) {
-      if (name.equals(product.getName())) {
+      /*
+       * // Convierne el nombre a minusculas y compara si son iguales
+       * 
+       * if (name.toLowerCase().equals(product.getName().toLowerCase())) {
+       * return product;
+       * }
+       */
+
+      //  Ignora mayusculas y minusculas para que no genere error
+      if (name.equalsIgnoreCase(product.getName())) {
+
         return product;
       }
     }
 
-    // Es mala practica retornar null, pero en este caso es para simplificar el ejemplo
+    // Es mala practica retornar null
     return null;
   }
 
