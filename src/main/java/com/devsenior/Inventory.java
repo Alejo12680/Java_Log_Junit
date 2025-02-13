@@ -3,6 +3,9 @@ package com.devsenior;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.devsenior.exceptions.*;
+
+
 public class Inventory {
 
   // Atributos
@@ -14,45 +17,46 @@ public class Inventory {
   }
 
   // Metodos
-  public void sellProduct(String name, Integer quantity) {
+  public void sellProduct(String name, Integer quantity) throws NotFoundException {
     // Producto existe
     var product = getProductByName(name);
 
-    // cantidad de stock que hay es mayor o igual a la cantidad que se quiere vender
-    if (product.getStock() > quantity) {
-      // Coje la cantidad de stock que hay y le resta la cantidad que se quiere vender
-      product.setStock(product.getStock() - quantity);
+    // No hay cantidad suficiente en el stock 
+    if (product.getStock() < quantity) {
+      throw new NotEnoughQuantityException("No hay suficiente stock para vender " + quantity + " unidades de " + name);
+    } 
 
-    } else {
-      System.out.println("Cantidad insuficiente en stock");
+    // Coje la cantidad de stock que hay y le resta la cantidad que se quiere vender
+    product.setStock(product.getStock() - quantity);
 
-    }
   }
 
-  // Metodo privado para buscar un producto por su nombre
-  private Product getProductByName(String name) {
-    for (var product : products) {
-      /*
-       * // Convierne el nombre a minusculas y compara si son iguales
-       * 
-       * if (name.toLowerCase().equals(product.getName().toLowerCase())) {
-       * return product;
-       * }
-       */
+  // Metodo privado para buscar un producto por su nombre tiene una excepcion NotFoundException check
+  private Product getProductByName(String name) throws NotFoundException {
 
+    for (var product : products) {
       //  Ignora mayusculas y minusculas para que no genere error
       if (name.equalsIgnoreCase(product.getName())) {
-
         return product;
       }
     }
 
-    // Es mala practica retornar null
-    return null;
+    throw new NotFoundException("Producto " + name + " existe en el inventario");
   }
 
-  public void addProduct(Product product) {
-    products.add(product);
+  public void addProduct(Product product) {    
+    
+    try {
+      var currentProduct = getProductByName(product.getName());
+      var newQuantity = currentProduct.getStock() + product.getStock(); 
+      var newPrice = (currentProduct.getStock() * currentProduct.getPrice() + product.getStock() * product.getPrice()) / newQuantity;
+
+      currentProduct.setStock(newQuantity);
+      currentProduct.setPrice(newPrice);
+
+    } catch (Exception e) {
+      products.add(product);
+    }
   }
 
   public Double calculateTotalInventory() {

@@ -1,0 +1,16 @@
+2025-02-13T16:15:29,544 [main] TRACE com.devsenior.Main - Iniciando la aplicación
+2025-02-13T16:15:29,547 [main] INFO  com.devsenior.Main - Creando el inventario de productos
+2025-02-13T16:15:29,557 [main] DEBUG com.devsenior.Main - Agregando producto: Laptop, cantidad: 10, precio: 1000.0
+2025-02-13T16:15:29,560 [main] DEBUG com.devsenior.Main - Agregando producto: Mouse, cantidad: 50, precio: 20.0
+2025-02-13T16:15:29,560 [main] DEBUG com.devsenior.Main - Agregando producto: Monitor, cantidad: 0, precio: 500.0
+2025-02-13T16:15:29,560 [main] DEBUG com.devsenior.Main - Vendiendo producto: Laptop, cantidad: 5
+2025-02-13T16:15:29,560 [main] INFO  com.devsenior.Main - Se vendieron 5 laptops
+2025-02-13T16:15:29,561 [main] DEBUG com.devsenior.Main - Vendiendo producto: Monitor, cantidad: 1
+2025-02-13T16:15:29,561 [main] ERROR com.devsenior.Main - No hay suficiente stock para vender 1 unidades de Monitor
+com.devsenior.exceptions.NotEnoughQuantityException: No hay suficiente stock para vender 1 unidades de Monitor
+	at com.devsenior.Inventory.sellProduct(Inventory.java:26) ~[classes/:?]
+	at com.devsenior.Main.main(Main.java:39) [classes/:?]
+2025-02-13T16:15:29,576 [main] DEBUG com.devsenior.Main - Vendiendo producto: Mouse, cantidad: 10
+2025-02-13T16:15:29,576 [main] INFO  com.devsenior.Main - Se vendieron 10 mouses
+2025-02-13T16:15:29,579 [main] DEBUG com.devsenior.Main - Valor total del inventario es: $ 5.800,00
+2025-02-13T16:15:29,579 [main] TRACE com.devsenior.Main - Finalizando la aplicación

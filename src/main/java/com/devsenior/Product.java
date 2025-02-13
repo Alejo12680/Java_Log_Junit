@@ -32,4 +32,8 @@ public class Product {
     this.stock = stock;
   }
 
+  public void setPrice(Double price) {
+    this.price = price;
+  }
+
 }
